@@ -18,13 +18,14 @@ export default {
   data() {
     return {
       products: [
-        { id: 1, name: 'Produit 1', price: 100, image: '@/assets/images/product1.jpg' },
-        { id: 2, name: 'Produit 2', price: 150, image: '@/assets/images/product2.jpg' },
-        { id: 3, name: 'Produit 3', price: 200, image: '@/assets/images/product3.jpg' },
+        { id: 1, name: 'Produit 1', price: 100, image: require('../assets/images/product1.jpg') },
+        { id: 2, name: 'Produit 2', price: 150, image: require('../assets/images/product2.jpg') },
+        { id: 3, name: 'Produit 3', price: 200, image: require('../assets/images/product3.jpg') },
       ],
     };
   },
 };
+
 </script>
 
 <style scoped>

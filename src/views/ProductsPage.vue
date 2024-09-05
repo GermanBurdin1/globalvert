@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Nos Produits</h1>
+    <p>Тестовый текст для проверки отображения страницы</p>
     <ProductList />
   </div>
 </template>
