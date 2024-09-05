@@ -1,12 +1,12 @@
 <template>
   <nav class="site-navigation">
     <ul>
-      <li><a href="#">Nos produits</a></li>
-      <li><a href="#">BBQ Box</a></li>
-      <li><a href="#">Notre Société</a></li>
-      <li><a href="#">News</a></li>
-      <li><a href="#">Boutique</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/products">Products</router-link></li>
+      <li><router-link to="/about">About</router-link></li>
+      <li><router-link to="/news">News</router-link></li>
+      <li><router-link to="/contact">Contact</router-link></li>
+      <li><router-link to="/cart">Cart</router-link></li>
     </ul>
   </nav>
 </template>
