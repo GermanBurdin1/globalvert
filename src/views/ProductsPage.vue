@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="page-container">
     <h1>Nos Produits</h1>
-    <p>Тестовый текст для проверки отображения страницы</p>
     <ProductList />
   </div>
 </template>
@@ -17,6 +16,10 @@ export default {
 </script>
 
 <style scoped>
+.page-container {
+  text-align: center;
+}
+
 h1 {
   margin-bottom: 20px;
 }

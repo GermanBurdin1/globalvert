@@ -1,6 +1,5 @@
 <template>
   <header class="site-header">
-    <img src="@/assets/images/logo.png" alt="Logo" class="logo" />
     <LanguageSelector />
     <SiteNavigation />
     <div class="auth-controls">
