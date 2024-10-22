@@ -9,4 +9,20 @@ export default createStore({
     products,
     user,
   },
+	state: {
+    cartItems: [],
+  },
+  mutations: {
+    addToCart(state, product) {
+      state.cartItems.push(product);
+    },
+  },
+  getters: {
+    cartCount: (state) => {
+      return state.cartItems.length;
+    },
+    cartItems: (state) => {
+      return state.cartItems;
+    },
+  },
 });

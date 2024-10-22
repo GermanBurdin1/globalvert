@@ -13,18 +13,17 @@
     <div v-if="showModal" class="modal-overlay">
       <div class="modal-content">
         <h3>{{ product.name }}</h3>
-        
+
         <!-- Карусель -->
         <div class="carousel">
           <img :src="product.image" alt="Product Image" class="product-image-modal" />
-          <!-- Можно добавить дополнительные изображения, если требуется -->
         </div>
-        
+
         <p>Prix: {{ product.price }} €</p>
-        
+
         <!-- Кнопка для добавления в корзину -->
         <button @click="addToCart(product)">Ajouter dans le panier</button>
-        
+
         <!-- Кнопка закрытия модального окна -->
         <button @click="showModal = false">Fermer</button>
       </div>
@@ -39,12 +38,12 @@ export default {
   },
   data() {
     return {
-      showModal: false, // состояние модального окна
+      showModal: false,
     };
   },
   methods: {
     addToCart(product) {
-      console.log('Добавлен в корзину:', product);
+      this.$emit('add-to-cart', product); // Вызываем событие для родителя
       this.showModal = false; // Закрыть модальное окно
     },
   },

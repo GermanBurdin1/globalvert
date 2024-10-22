@@ -4,7 +4,7 @@
     <SiteNavigation />
     <div class="auth-controls">
       <UserRegistration />
-      <SiteCart />
+      <SiteCart /> <!-- Компонент для отображения иконки корзины -->
     </div>
   </header>
 </template>

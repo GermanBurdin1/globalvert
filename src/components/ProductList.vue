@@ -1,17 +1,40 @@
 <template>
   <div class="product-list-container">
     <div class="product-list">
+      <!-- Выводим список продуктов -->
       <ProductItem
         v-for="product in products"
         :key="product.id"
         :product="product"
+        @add-to-cart="addToCart"  
       />
+    </div>
+
+    <!-- Модальное окно для корзины -->
+    <div v-if="showCart" class="modal-overlay">
+      <div class="modal-content">
+        <h3>Votre Panier</h3>
+        <div v-if="cartItems.length > 0">
+          <ul>
+            <li v-for="item in cartItems" :key="item.id">
+              <img :src="item.image" alt="Product Image" style="width: 50px;" />
+              {{ item.name }} - {{ item.price }} €
+            </li>
+          </ul>
+          <router-link to="/cart">Passer à la commande</router-link> <!-- Ссылка на CartPage.vue -->
+        </div>
+        <div v-else>
+          <p>Votre panier est vide</p>
+        </div>
+        <button @click="toggleCart">Fermer</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ProductItem from './ProductItem.vue';
+import { mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -20,12 +43,17 @@ export default {
   data() {
     return {
       products: [
-        { id: 1, name: 'BBQ Box Good Picnic', description: "La boite à Barbecue innovante, simple, non salissante, prête à l'emploi.", image: require('../assets/images/charbon.webp') },
-        { id: 2, name: 'Briquettes', description: "Nous fournissons des briquettes pour les barbecue. Les briquettes permettent un temps de combustion plus long et plus uniforme tous en occupant moins de volume pendant le transport.", image: require('../assets/images/briquettes.webp') },
-        { id: 3, name: 'Palettes', description: "Nos palettes à la norme Europalette et sur mesure.", image: require('../assets/images/product3.jpg') },
-        { id: 4, name: 'Planches rabotées et profilés en bois', description: "Nous produisons des planches rabotées. Les dimensions peuvent être standard et sur mesure.", image: require('../assets/images/product1.jpg') },
+        { id: 1, name: 'BBQ Box Good Picnic', description: "La boite à Barbecue innovante, simple, non salissante, prête à l'emploi.", image: require('../assets/images/charbon.webp'), price: 25 },
+        { id: 2, name: 'Briquettes', description: "Nous fournissons des briquettes pour les barbecue. Les briquettes permettent un temps de combustion plus long et plus uniforme tous en occupant moins de volume pendant le transport.", image: require('../assets/images/briquettes.webp'), price: 10 },
+        { id: 3, name: 'Palettes', description: "Nos palettes à la norme Europalette et sur mesure.", image: require('../assets/images/product3.jpg'), price: 15 },
+        { id: 4, name: 'Planches rabotées et profilés en bois', description: "Nous produisons des planches rabotées. Les dimensions peuvent être standard et sur mesure.", image: require('../assets/images/product1.jpg'), price: 20 },
       ],
+      cartItems: [], // Список товаров в корзине
+      showCart: false, // Состояние для модального окна корзины
     };
+  },
+  methods: {
+    ...mapMutations(['addToCart']),
   },
 };
 </script>
