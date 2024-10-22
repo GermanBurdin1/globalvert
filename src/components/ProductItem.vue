@@ -19,7 +19,14 @@
           <img :src="product.image" alt="Product Image" class="product-image-modal" />
         </div>
 
-        <p>Prix: {{ product.price }} €</p>
+        <!-- Выбор количества -->
+        <div class="quantity-control">
+          <label for="quantity">Quantité:</label>
+          <input type="number" v-model.number="quantity" min="1" />
+        </div>
+
+        <!-- Общая цена -->
+        <p>Prix total: {{ totalPrice }} €</p>
 
         <!-- Кнопка для добавления в корзину -->
         <button @click="addToCart(product)">Ajouter dans le panier</button>
@@ -39,11 +46,23 @@ export default {
   data() {
     return {
       showModal: false,
+      quantity: 1, // По умолчанию количество 1
     };
+  },
+  computed: {
+    totalPrice() {
+      return this.product.price * this.quantity; // Общая цена в зависимости от количества
+    },
   },
   methods: {
     addToCart(product) {
-      this.$emit('add-to-cart', product); // Вызываем событие для родителя
+      // Добавляем товар в корзину с выбранным количеством
+      const cartItem = {
+        ...product,
+        quantity: this.quantity,
+        totalPrice: this.totalPrice,
+      };
+      this.$emit('add-to-cart', cartItem); // Вызываем событие для передачи товара в родительский компонент
       this.showModal = false; // Закрыть модальное окно
     },
   },

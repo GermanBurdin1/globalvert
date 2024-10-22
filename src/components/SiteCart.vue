@@ -10,14 +10,27 @@
         <h3>Votre Panier</h3>
         <div v-if="cartItems.length > 0">
           <ul class="cart-item-list">
-            <li v-for="item in cartItems" :key="item.id" class="cart-item">
-              <!-- Увеличенное изображение товара -->
+            <li v-for="(item, index) in cartItems" :key="item.id" class="cart-item">
+              <!-- Изображение товара -->
               <img :src="item.image" alt="Product Image" class="cart-item-image" />
               
               <!-- Информация о товаре -->
               <div class="cart-item-info">
                 <h4>{{ item.name }}</h4>
-                <p>{{ item.price }} €</p>
+
+                <!-- Поле для изменения количества -->
+                <div class="quantity-control">
+                  <label for="quantity">Quantité :</label>
+                  <input 
+                    type="number" 
+                    v-model.number="item.quantity" 
+                    @change="updatePrice(index)" 
+                    min="1" 
+                  />
+                </div>
+
+                <!-- Пересчитанная цена -->
+                <p>Prix total: {{ item.totalPrice }} €</p>
               </div>
             </li>
           </ul>
@@ -49,6 +62,19 @@ export default {
     toggleCart() {
       this.showCart = !this.showCart;
     },
+    updatePrice(index) {
+      // Обновляем цену товара в зависимости от количества
+      const item = this.cartItems[index];
+      item.totalPrice = item.quantity * item.price;
+    },
+  },
+  mounted() {
+    // Инициализация totalPrice для каждого товара при монтировании
+    this.cartItems.forEach(item => {
+      if (!item.totalPrice) {
+        item.totalPrice = item.quantity * item.price;
+      }
+    });
   },
 };
 </script>
@@ -56,15 +82,15 @@ export default {
 <style scoped>
 /* Стили для корзины */
 .cart-link {
-  color: white; /* Белый цвет */
-  text-decoration: none; /* Убираем подчеркивание */
+  color: white;
+  text-decoration: none;
   display: flex;
   align-items: center;
   font-size: 20px;
 }
 
 .cart-link:hover {
-  color: #f0f0f0; /* Лёгкий эффект при наведении */
+  color: #f0f0f0;
 }
 
 .cart-icon {
@@ -107,11 +133,11 @@ export default {
 }
 
 .cart-item-image {
-  width: 150px; /* Увеличим изображение до 150px */
+  width: 150px;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
-  margin-right: 20px; /* Добавим отступ справа */
+  margin-right: 20px;
 }
 
 .cart-item-info {
@@ -124,6 +150,19 @@ export default {
 
 .cart-item-info p {
   margin: 0;
+}
+
+.quantity-control label {
+  color: #333; 
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.quantity-control input {
+  width: 60px;
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 16px; 
 }
 
 /* Кнопка закрытия модального окна */
