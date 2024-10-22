@@ -1,22 +1,27 @@
 <template>
-  <div>
-    <h1>Détails du Produit</h1>
-    <div class="product-detail">
-      <!-- Замените на реальную логику показа деталей продукта -->
-      <p>Détails pour le produit avec ID: {{ $route.params.id }}</p>
+  <div class="product-detail">
+    <img :src="product.image" alt="Product Image" />
+    <div class="product-info">
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+      <p>Цена: {{ product.price }} €</p>
+      <!-- Добавь дополнительные данные по необходимости -->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    productId() {
-      return this.$route.params.id;
-    },
+  props: ['product'], // Оставляем только props
+  created() {
+    // Если данные о продукте передаются через props, ничего не нужно делать
+    // Если нужно загружать данные по productId, добавь код сюда
   },
 };
 </script>
+
+
+
 
 <style scoped>
 h1 {

@@ -10,7 +10,11 @@ import CartPage from '@/views/CartPage.vue';
 const routes = [
   { path: '/', component: HomePage },
   { path: '/products', component: ProductsPage },
-  { path: '/products/:id', component: ProductDetailPage },
+  {
+    path: '/products/:id',
+    name: 'ProductDetail', // Добавь имя маршрута
+    component: ProductDetailPage,
+  },
   { path: '/about', component: AboutPage },
   { path: '/news', component: NewsPage },
   { path: '/contact', component: ContactPage },

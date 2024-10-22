@@ -16,7 +16,6 @@ export default {
   },
   methods: {
     changeLanguage() {
-      // Логика для смены языка
       console.log('Selected language:', this.selectedLanguage);
     },
   },
