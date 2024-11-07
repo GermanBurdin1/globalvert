@@ -3,7 +3,6 @@
     <LanguageSelector />
     <SiteNavigation />
     <div class="auth-controls">
-      <UserRegistration />
       <SiteCart /> <!-- Компонент для отображения иконки корзины -->
     </div>
   </header>
@@ -12,14 +11,12 @@
 <script>
 import LanguageSelector from './LanguageSelector.vue';
 import SiteNavigation from './SiteNavigation.vue';
-import UserRegistration from './UserRegistration.vue';
 import SiteCart from './SiteCart.vue';
 
 export default {
   components: {
     LanguageSelector,
     SiteNavigation,
-    UserRegistration,
     SiteCart,
   },
 };

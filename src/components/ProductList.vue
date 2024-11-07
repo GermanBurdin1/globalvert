@@ -1,32 +1,49 @@
 <template>
   <div class="product-list-container">
-    <div class="product-list">
+    <div class="product-list row row-cols-1 row-cols-md-2 g-4">
       <!-- Выводим список продуктов -->
       <ProductItem
         v-for="product in products"
         :key="product.id"
         :product="product"
-        @add-to-cart="addToCart"  
+        @add-to-cart="addToCart"
       />
     </div>
 
     <!-- Модальное окно для корзины -->
-    <div v-if="showCart" class="modal-overlay">
-      <div class="modal-content">
-        <h3>Votre Panier</h3>
-        <div v-if="cartItems.length > 0">
-          <ul>
-            <li v-for="item in cartItems" :key="item.id">
-              <img :src="item.image" alt="Product Image" style="width: 50px;" />
-              {{ item.name }} - {{ item.price }} €
-            </li>
-          </ul>
-          <router-link to="/cart">Passer à la commande</router-link> <!-- Ссылка на CartPage.vue -->
+    <div v-if="showCart" class="modal fade show d-block" style="background: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Votre Panier</h5>
+            <button
+              type="button"
+              class="btn-close"
+              aria-label="Close"
+              @click="toggleCart"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div v-if="cartItems.length > 0">
+              <ul class="list-group">
+                <li v-for="item in cartItems" :key="item.id" class="list-group-item d-flex align-items-center">
+                  <img :src="item.image" alt="Product Image" class="img-thumbnail me-3" style="width: 50px;" />
+                  <div>
+                    <h6 class="mb-0">{{ item.name }}</h6>
+                    <small>{{ item.price }} €</small>
+                  </div>
+                </li>
+              </ul>
+              <router-link to="/cart" class="btn btn-primary mt-3">Passer à la commande</router-link>
+            </div>
+            <div v-else>
+              <p class="text-muted">Votre panier est vide</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="toggleCart">Fermer</button>
+          </div>
         </div>
-        <div v-else>
-          <p>Votre panier est vide</p>
-        </div>
-        <button @click="toggleCart">Fermer</button>
       </div>
     </div>
   </div>
@@ -58,26 +75,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* Центрирование контейнера для карточек */
 .product-list-container {
-  display: flex;
-  justify-content: center;
   padding: 20px;
 }
 
-/* Контейнер для карточек */
-.product-list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-/* Стиль для карточек */
+/* Применение стилей Bootstrap для карточек */
 .product-item {
   display: flex;
-  max-width: 800px;
-  width: 100%;
   border: 1px solid #ddd;
   padding: 20px;
   align-items: center;
@@ -86,54 +92,27 @@ export default {
   border-radius: 8px;
 }
 
-/* Изображение продукта */
-.product-item > img {
-  width: 60%; /* Изображение занимает 60% ширины карточки */
+.product-item img {
+  width: 100%;
   height: auto;
-  max-height: 300px; /* Ограничиваем высоту для прямоугольной формы */
-  object-fit: cover; /* Обеспечиваем равномерное заполнение */
-  margin-right: 20px;
-  border-radius: 5px;
-  display: block;
+  object-fit: cover;
+  margin-bottom: 15px;
 }
 
-/* Текстовое описание */
 .product-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch; /* Растягиваем элементы по всей ширине */
-  text-align: left; /* Выравниваем текст по левому краю */
+  text-align: left;
 }
 
 .product-info h3 {
-  margin: 0;
   font-size: 20px;
 }
 
 .product-info p {
-  margin: 10px 0;
   font-size: 16px;
-  line-height: 1.4;
-  flex-grow: 1; /* Позволяет абзацу занимать больше места */
 }
 
-/* Кнопка действия */
 .product-info button {
-  width: 100%; /* Кнопка занимает всю ширину текстовой области */
-  padding: 10px 20px;
-  background-color: #ff5722;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.product-info button:hover {
-  background-color: #e64a19;
+  width: 100%;
+  padding: 10px;
 }
 </style>
-
-
