@@ -6,19 +6,21 @@ import AboutPage from '@/views/AboutPage.vue';
 import NewsPage from '@/views/NewsPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
 import CartPage from '@/views/CartPage.vue';
+import CheckoutPage from '@/views/CheckoutPage.vue'; 
 
 const routes = [
   { path: '/', component: HomePage },
   { path: '/products', component: ProductsPage },
   {
     path: '/products/:id',
-    name: 'ProductDetail', // Добавь имя маршрута
+    name: 'ProductDetail', 
     component: ProductDetailPage,
   },
   { path: '/about', component: AboutPage },
   { path: '/news', component: NewsPage },
   { path: '/contact', component: ContactPage },
   { path: '/cart', component: CartPage },
+	{ path: '/checkout', component: CheckoutPage },
 ];
 
 const router = createRouter({
