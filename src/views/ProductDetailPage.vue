@@ -5,7 +5,7 @@
       <h1>{{ product.name }}</h1>
       <p>{{ product.description }}</p>
       <p>Цена: {{ product.price }} €</p>
-      <!-- Добавь дополнительные данные по необходимости -->
+      <!-- unité 9.95 euros + 8 euros livraison; caisse => 10 euros livraison 64 euros = 8 euros/ unité  -->
     </div>
   </div>
 </template>
@@ -14,8 +14,7 @@
 export default {
   props: ['product'], // Оставляем только props
   created() {
-    // Если данные о продукте передаются через props, ничего не нужно делать
-    // Если нужно загружать данные по productId, добавь код сюда
+
   },
 };
 </script>
