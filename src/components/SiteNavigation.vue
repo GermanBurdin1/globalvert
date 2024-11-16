@@ -1,10 +1,9 @@
 <template>
   <nav class="site-navigation">
     <ul>
-      <li><router-link to="/products">Products</router-link></li>
-      <li><router-link to="/about">About</router-link></li>
-      <li><router-link to="/news">News</router-link></li>
-      <li><router-link to="/contact">Contact</router-link></li>
+      <li><router-link to="/products">Produits</router-link></li>
+      <li><router-link to="/about">A propos</router-link></li>
+      <li><router-link to="/contact">Contacts</router-link></li>
       <li><router-link to="/cart">Cart</router-link></li>
     </ul>
   </nav>

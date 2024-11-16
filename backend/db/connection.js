@@ -2,9 +2,9 @@ const mysql = require('mysql');
 
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root', // Замените на ваши данные
-  password: '', // Замените на ваш пароль
-  database: 'your_database_name' // Замените на название вашей базы данных
+  user: 'root', 
+  password: '', 
+  database: 'globvert' 
 });
 
 db.connect(err => {

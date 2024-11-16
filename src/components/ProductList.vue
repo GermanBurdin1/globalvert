@@ -60,10 +60,10 @@ export default {
   data() {
     return {
       products: [
-        { id: 1, name: 'BBQ Box Good Picnic', description: "La boite à Barbecue innovante, simple, non salissante, prête à l'emploi.", image: require('../assets/images/charbon.webp'), price: 25 },
-        { id: 2, name: 'Briquettes', description: "Nous fournissons des briquettes pour les barbecue. Les briquettes permettent un temps de combustion plus long et plus uniforme tous en occupant moins de volume pendant le transport.", image: require('../assets/images/briquettes.webp'), price: 10 },
-        { id: 3, name: 'Palettes', description: "Nos palettes à la norme Europalette et sur mesure.", image: require('../assets/images/product3.jpg'), price: 15 },
-        { id: 4, name: 'Planches rabotées et profilés en bois', description: "Nous produisons des planches rabotées. Les dimensions peuvent être standard et sur mesure.", image: require('../assets/images/product1.jpg'), price: 20 },
+        { id: 1, name: 'BBQ Box Good Picnic', description: "La boite à Barbecue innovante, simple, non salissante, prête à l'emploi.", image: require('../assets/images/boxhome.jpg'), price: 25 },
+        { id: 2, name: 'Briquettes', description: "Nous fournissons des briquettes pour les barbecue. Les briquettes permettent un temps de combustion plus long et plus uniforme tous en occupant moins de volume pendant le transport.", image: require('../assets/images/boxhome.jpg'), price: 10 },
+        { id: 3, name: 'Palettes', description: "Nos palettes à la norme Europalette et sur mesure.", image: require('../assets/images/BBQ-Box-Profil-red.jpg'), price: 15 },
+        { id: 4, name: 'Planches rabotées et profilés en bois', description: "Nous produisons des planches rabotées. Les dimensions peuvent être standard et sur mesure.", image: require('../assets/images/BBQ-Box-Profil.jpg'), price: 20 },
       ],
       cartItems: [], // Список товаров в корзине
       showCart: false, // Состояние для модального окна корзины
